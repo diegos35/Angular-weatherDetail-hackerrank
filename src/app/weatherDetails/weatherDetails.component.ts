@@ -8,9 +8,16 @@ import {Component, Input, OnInit} from '@angular/core';
 
 export class WeatherDetails implements OnInit {
   @Input() weatherData: data[];
+  searchedData : data;
+  searchTerm = ""
 
   ngOnInit() {
+  }
 
+  cityChange(value){
+    this.searchedData = this.weatherData.find(
+      ({ name }) => name.toLowerCase() === value.toLowerCase()
+    );
   }
 }
 
